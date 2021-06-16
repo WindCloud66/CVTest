@@ -12,5 +12,7 @@ img[3,3] = [0,0,255]
 b,g,r = cv.split(img)
 # 通道合并
 img = cv.merge((b,g,r))
-cv.imshow('image',img)
+# cv.cvtColor(input_image，flag)
+gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+cv.imshow('image',gray)
 cv.waitKey(0)
