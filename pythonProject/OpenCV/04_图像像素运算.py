@@ -18,7 +18,7 @@ img4 = img1+img2 # 直接相加
 # axes[1].set_title("numpyAdd")
 # plt.show()
 # 2 图像混合
-img3 = cv.addWeighted(img1,0.7,img2,0.3,0)
+img3 = cv.addWeighted(img1,0.3,img2,0.7,0)
 
 # 3 图像显示
 plt.figure(figsize=(8,8))
