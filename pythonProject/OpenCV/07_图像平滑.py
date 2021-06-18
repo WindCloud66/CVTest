@@ -65,3 +65,16 @@ axes[0].set_title("origin")
 axes[1].imshow(blur[:,:,::-1])
 axes[1].set_title("median Filter")
 plt.show()
+
+# 1 图像读取(锐化)
+img = cv.imread('picture/img.png')
+#定义一个核
+kernel = np.array([[-1/9, -1/9, -1/9], [-1/9, 2 - -1/9, -1/9], [-1/9, -1/9, -1/9]], np.float32)
+sharpen = cv.filter2D(img, -1, kernel=kernel)
+
+fig,axes=plt.subplots(nrows=1,ncols=2,figsize=(8,8))
+axes[0].imshow(img[:,:,::-1])
+axes[0].set_title("origin")
+axes[1].imshow(sharpen[:,:,::-1])
+axes[1].set_title("sharpen")
+plt.show()
