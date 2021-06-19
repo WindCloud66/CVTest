@@ -1,0 +1,57 @@
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+import math  #加载math库
+
+# 加载图片并转换为0-1之间数值float32格式
+img = cv2.imread('picture/img.png',0).astype(np.float32) / 255
+
+kernel1 = cv2.getGaborKernel((21, 21), 5, 0, 10, 1, 0, cv2.CV_32F)
+kernel2 = cv2.getGaborKernel((21, 21), 5, math.pi * 0.45, 10, 1, 0, cv2.CV_32F)
+kernel3 = cv2.getGaborKernel((21, 21), 5, math.pi * 0.75, 10, 1, 0, cv2.CV_32F)
+kernel4 = cv2.getGaborKernel((21, 21), 5, math.pi * 0.5, 10, 1, 0, cv2.CV_32F)
+kernel1 /= math.sqrt((kernel1 * kernel1).sum())
+kernel2 /= math.sqrt((kernel2 * kernel2).sum())
+kernel3 /= math.sqrt((kernel3 * kernel3).sum())
+kernel4 /= math.sqrt((kernel4 * kernel4).sum())
+filtered1 = cv2.filter2D(img, -1, kernel1)
+filtered2 = cv2.filter2D(img, -1, kernel2)
+filtered3 = cv2.filter2D(img, -1, kernel3)
+filtered4 = cv2.filter2D(img, -1, kernel4)
+# fig,axes=plt.subplots(nrows=1,ncols=3,figsize=(10,8))
+# axes[0].imshow(img,cmap=plt.cm.gray)
+# axes[0].set_title("origin")
+# axes[1].imshow(kernel1,cmap=plt.cm.gray)
+# axes[1].set_title("kernel1")
+# axes[2].imshow(filtered1,cmap=plt.cm.gray)
+# axes[2].set_title("filtered1")
+# plt.show()
+#
+# fig,axes=plt.subplots(nrows=1,ncols=3,figsize=(10,8))
+# axes[0].imshow(img,cmap=plt.cm.gray)
+# axes[0].set_title("origin")
+# axes[1].imshow(kernel2,cmap=plt.cm.gray)
+# axes[1].set_title("kernel2")
+# axes[2].imshow(filtered2,cmap=plt.cm.gray)
+# axes[2].set_title("filtered2")
+# plt.show()
+# fig,axes=plt.subplots(nrows=1,ncols=3,figsize=(10,8))
+# axes[0].imshow(img,cmap=plt.cm.gray)
+# axes[0].set_title("origin")
+# axes[1].imshow(kernel3,cmap=plt.cm.gray)
+# axes[1].set_title("kernel3")
+# axes[2].imshow(filtered3,cmap=plt.cm.gray)
+# axes[2].set_title("filtered3")
+# plt.show()
+# fig,axes=plt.subplots(nrows=1,ncols=3,figsize=(10,8))
+# axes[0].imshow(img,cmap=plt.cm.gray)
+# axes[0].set_title("origin")
+# axes[1].imshow(kernel4,cmap=plt.cm.gray)
+# axes[1].set_title("kernel4")
+# axes[2].imshow(filtered4,cmap=plt.cm.gray)
+# axes[2].set_title("filtered4")
+# plt.show()
+sum = filtered1/2 + filtered2/2  + filtered3/2  + filtered4/2
+cv2.imshow("gamma: 2.0", sum)
+cv2.waitKey()
+cv2.destroyAllWindows()
