@@ -2,7 +2,7 @@ import cv2 as cv
 import numpy as np
 from matplotlib import pyplot as plt
 
-# 1 图像读取(锐化)
+# 1 图像读取
 img = cv.imread('picture/img.png', 0)
 
 #定义检测水平的核

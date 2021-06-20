@@ -1,7 +1,7 @@
 import cv2 as cv
 import random
 #产生一张椒盐噪声的图片
-# png = cv.imread('picture/img.png')
+# png = cv.imread('picture/img.jpg')
 # rows,cols = png.shape[:2]
 # for i in range(rows):
 #     for j in range(cols):

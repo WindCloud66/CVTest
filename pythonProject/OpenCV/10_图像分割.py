@@ -9,7 +9,7 @@ from skimage.io import imread, imshow
 from sklearn.cluster import KMeans, MeanShift, estimate_bandwidth
 
 #1.读取图片
-# color = imread('picture/img.png')
+# color = imread('picture/img.jpg')
 #2.Pandas库将每个像素存储为单独的数据点
 # def image_to_pandas(image):
 #     df = pd.DataFrame([image[:,:,0].flatten(),
